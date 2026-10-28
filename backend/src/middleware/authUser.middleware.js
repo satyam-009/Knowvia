@@ -1,9 +1,7 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
+import tokenBlacklistModel from "../model/tokenBlacklist.model.js";
 
-
-
-
-export function authUser(req, res, next) {
+export async function authUser(req, res, next) {
     const token = req.cookies?.token;
 
     if (!token) {
@@ -14,6 +12,15 @@ export function authUser(req, res, next) {
     }
 
     try {
+        const isBlacklisted = await tokenBlacklistModel.findOne({ token });
+
+        if (isBlacklisted) {
+            return res.status(401).json({
+                message: "Session expired. Please log in again.",
+                success: false
+            });
+        }
+
         const validToken = jwt.verify(
             token,
             process.env.JWT_SECRET
@@ -21,7 +28,7 @@ export function authUser(req, res, next) {
 
         req.user = validToken;
 
-        next();
+        return next();
     } catch (error) {
         return res.status(401).json({
             message: "Invalid or expired token",

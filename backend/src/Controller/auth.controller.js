@@ -2,6 +2,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import userModel from "../model/user.model.js";
+import tokenBlacklistModel from "../model/tokenBlacklist.model.js";
 import { sendEmail } from "../services/mail.service.js";
 
 /*
@@ -147,7 +148,8 @@ export async function loginController(req, res) {
             username: user.username,
             email: user.email
         },
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET,
+        { expiresIn: "1d" }
     );
 
     res.cookie("token", token, {
@@ -167,6 +169,21 @@ export async function loginController(req, res) {
     });
 }
 
+/*
+ *@ Purpose: Clear the authentication cookie
+ *@ Returns: Logout status
+ */
+export async function logoutController(req, res) {
+    const token = req.cookies.token
+
+
+    await tokenBlacklistModel.create({ token })
+    res.clearCookie("token")
+
+    res.status(200).json({
+        message: "logged-out succesfully "
+    })
+}
 /*
  *@ Purpose: Fetch authenticated user's profile
  *@ Returns: User details + verification status

@@ -4,6 +4,7 @@ import {
     registerController,
     verifyEmail,
     loginController,
+    logoutController,
     getMe
 } from "../Controller/auth.controller.js";
 import {
@@ -37,6 +38,14 @@ authRouter.get("/verify-email", verifyEmail);
  *@ Returns: User details + JWT cookie
  */
 authRouter.post("/login", loginValidator, loginController);
+
+/*
+ *@ POST
+ *@ Public
+ *@ Purpose: Log out user
+ *@ Returns: Logout status
+ */
+authRouter.post("/logout", logoutController);
 
 /*
  *@ GET
