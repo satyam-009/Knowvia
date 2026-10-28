@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+.app-theme {
+  background: #ffffff;
+  color: #020617;
+}
+
+.chat-sidebar {
+  background: rgb(255 255 255 / 96%);
+  border-color: #ede9fe;
+}
+
+.chat-header {
+  background: rgb(255 255 255 / 84%);
+  border-color: #ede9fe;
+  color: #475569;
+}
+
+.chat-main {
+  background: #ffffff;
+  color: #020617;
+}
+
+.profile-menu {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.sidebar-footer {
+  border-color: #f1f5f9;
+}
+
+.composer-wrap {
+  background: linear-gradient(to top, #ffffff 0%, rgb(255 255 255 / 96%) 70%, transparent 100%);
+}
+
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ddd6fe transparent;
+}
+
+:root[data-theme="dark"] .app-theme {
+  background: #0b1020;
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .chat-sidebar {
+  background: rgb(15 23 42 / 97%);
+  border-color: #293449;
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .chat-header {
+  background: rgb(15 23 42 / 88%);
+  border-color: #293449;
+  color: #cbd5e1;
+}
+
+:root[data-theme="dark"] .chat-main {
+  background: #0b1020;
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .profile-menu {
+  background: #111827;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .sidebar-footer {
+  border-color: #293449;
+}
+
+:root[data-theme="dark"] .composer-wrap {
+  background: linear-gradient(to top, #0b1020 0%, rgb(11 16 32 / 96%) 70%, transparent 100%);
+}
+
+/* Keep existing light-theme utility classes readable in dark mode. */
+:root[data-theme="dark"] .bg-white,
+:root[data-theme="dark"] .bg-white\/80,
+:root[data-theme="dark"] .bg-white\/90,
+:root[data-theme="dark"] .bg-white\/95 {
+  background-color: #111827;
+}
+
+:root[data-theme="dark"] .bg-slate-50,
+:root[data-theme="dark"] .bg-slate-50\/70 {
+  background-color: #1e293b;
+}
+
+:root[data-theme="dark"] .text-slate-950,
+:root[data-theme="dark"] .text-slate-900,
+:root[data-theme="dark"] .text-slate-800,
+:root[data-theme="dark"] .text-slate-700 {
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] .text-slate-600,
+:root[data-theme="dark"] .text-slate-500 {
+  color: #a8b4c7;
+}
+
+:root[data-theme="dark"] .border-slate-200,
+:root[data-theme="dark"] .border-slate-100,
+:root[data-theme="dark"] .border-violet-100,
+:root[data-theme="dark"] .border-violet-100\/80,
+:root[data-theme="dark"] .border-violet-200\/90 {
+  border-color: #334155;
+}
+
+:root[data-theme="dark"] .bg-violet-50 {
+  background-color: #292044;
+}
+
+:root[data-theme="dark"] .text-violet-600,
+:root[data-theme="dark"] .text-violet-700 {
+  color: #c4b5fd;
+}
+
+:root[data-theme="dark"] .hover\:bg-slate-50:hover {
+  background-color: #1e293b;
+}
+
+:root[data-theme="dark"] .hover\:bg-violet-50:hover {
+  background-color: #292044;
+}
+
+:root[data-theme="dark"] .shadow-slate-200\/20,
+:root[data-theme="dark"] .shadow-slate-200\/30 {
+  --tw-shadow-color: rgb(0 0 0 / 20%);
+}
+
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] input {
+  color: #e2e8f0;
+}
+
+:root[data-theme="dark"] textarea::placeholder,
+:root[data-theme="dark"] input::placeholder {
+  color: #94a3b8;
+}
+
+:root[data-theme="dark"] .chat-main .bg-white\/90 {
+  background-color: #111827;
+}
+
+:root[data-theme="dark"] .chat-main .border-slate-200\/80 {
+  border-color: #334155;
+}
